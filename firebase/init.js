@@ -7,13 +7,13 @@ import "firebase/messaging";
 
 // Fill this in with your firebase details
 var config = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
+  apiKey: "AIzaSyDe91yMsx3TJ2qeyW4TsGlKT_8gMNw7uuE",
+  authDomain: "studyhubasiaapp.firebaseapp.com",
+  projectId: "studyhubasiaapp",
+  storageBucket: "studyhubasiaapp.appspot.com",
+  messagingSenderId: "597012893034",
+  appId: "1:597012893034:web:baa0cf6770884112402913",
+  measurementId: "G-1KF8ZXP4QS"
 };
 
 !firebase.apps.length ? firebase.initializeApp(config) : "";
@@ -28,7 +28,7 @@ export const persistencetype = firebase.auth.Auth.Persistence.LOCAL;
 // });
 
 //Specify the link to firestoreDB collection that you will be using, feel free to change, add, delete.
-export const firestoreDB = firebase.firestore().collection("users").doc("users");
+export const firestoreDB = firebase.firestore()
 
 export const storage = firebase.app().storage("gs://YOUR_BUCKET_HERE");
 // export const messaging = firebase.messaging();
@@ -38,5 +38,8 @@ export const storage = firebase.app().storage("gs://YOUR_BUCKET_HERE");
 // );
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
 export const FacebookProvider = new firebase.auth.FacebookAuthProvider()
+export const LinkedInProvider = new firebase.auth.OAuthProvider('linkedin.com');
+LinkedInProvider.addScope('r_liteprofile');
+LinkedInProvider.addScope('r_emailaddress');
 
 export default firebase;
