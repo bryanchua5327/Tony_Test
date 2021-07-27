@@ -2,6 +2,10 @@
   <div>
     <h1>Subwork</h1>
     <h2>{{ $route.query.code }} - List of Subcons Available</h2>
+
+    <Navigation></Navigation>
+    <v-card-subtitle>Stars can be set to read-only mode</v-card-subtitle>
+
     <template>
       <div>
         <v-data-table
@@ -19,6 +23,7 @@
                 background-color="grey darken-1"
                 half-increments
                 hover
+                readonly
                 @input="rateSubCon(item.name, item.rating)"
               ></v-rating>
               {{ `(${item.rating.toFixed(1)})` }}
@@ -31,7 +36,11 @@
 </template>
 
 <script>
+import Navigation from "~/components/Navigation.vue";
 export default {
+  components: {
+    Navigation,
+  },
   name: "index",
   // middleware: "authentication"
   data() {

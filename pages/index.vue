@@ -2,6 +2,12 @@
   <div>
     <h1>WPC Account Main page</h1>
     <h2>{{ wpc.name }}</h2>
+    <Navigation></Navigation>
+    <v-card-subtitle
+      >Click on code to view individual subwork's
+      Subcontractors</v-card-subtitle
+    >
+
     <template>
       <div>
         <v-data-table
@@ -32,7 +38,11 @@
 </template>
 
 <script>
+import Navigation from "~/components/Navigation.vue";
 export default {
+  components: {
+    Navigation,
+  },
   name: "index",
   // middleware: "authentication"
   data() {

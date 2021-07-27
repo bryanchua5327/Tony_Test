@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <!-- Sizes your content based upon application components -->
+
     <v-main class="main-div">
       <!-- Provides the application the proper gutter -->
-      <div></div>
+
       <v-container fluid class="main-cont">
+        <AppBar @sideNavToggle="toggleSideBar" />
         <nuxt />
       </v-container>
     </v-main>
@@ -12,7 +14,11 @@
 </template>
 
 <script>
+import AppBar from "~/components/Appheader.vue";
 export default {
+  components: {
+    AppBar,
+  },
   data() {
     return {
       drawer: false,

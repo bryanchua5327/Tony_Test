@@ -2,8 +2,14 @@
   <div>
     <h1>Update Subcontractor performance</h1>
     <h2>{{ wpc.name }}</h2>
+    <Navigation></Navigation>
+    <v-card-subtitle
+      >Here is where you actually rate your subcontractors<br />When you rate
+      them using the rating star, the value gets emitted as a float<br />We can
+      also set allow ratings for jobs that have an assigned
+      subcontractors</v-card-subtitle
+    >
 
-    {{ wpc }}
     <template>
       <div>
         <v-data-table
@@ -35,7 +41,11 @@
 </template>
 
 <script>
+import Navigation from "~/components/Navigation.vue";
 export default {
+  components: {
+    Navigation,
+  },
   name: "index",
   // middleware: "authentication"
   data() {
