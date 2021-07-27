@@ -16,7 +16,8 @@ export const state = () => ({
 
     ],
     wpc: [{
-        name: "ABC Company", work: [
+        name: "ABC Company",
+        work: [
             {
                 scope: "Signages",
                 code: "PR01",
@@ -208,6 +209,10 @@ export const getters = {
         console.log(state.wpc)
         return [...state.wpc]
     },
+
+    getOneWPC: (state) => (name) => {
+        return state.wpc.find((x) => x.name == name);
+    },
     getSubcons(state) {
         return [...state.subCons]
     }
@@ -217,7 +222,6 @@ export const getters = {
 
 
 export const actions = {
-
     rateSubCon({ dispatch, commit, state }, subConRating) {
         //update subCon rating
         const index = state.subCons.findIndex(x => x.name == subConRating.name)

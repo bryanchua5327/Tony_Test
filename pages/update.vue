@@ -23,13 +23,12 @@
             <div class="d-flex align-center justify-center">
               <v-rating
                 :readonly="item.subCons ? false : true"
-                :value="item.rating"
-                v-model="rating[`${item.subCons}`]"
+                v-model="item.rating"
                 color="yellow darken-3"
                 background-color="grey darken-1"
                 half-increments
                 hover
-                @input="log(rating[`${item.subCons}`], item.subCons)"
+                @input="rateSubCon(item.subCons, item.rating)"
               ></v-rating>
               {{ `(${item.rating ? item.rating.toFixed(1) : 0})` }}
             </div>
@@ -42,11 +41,14 @@
 
 <script>
 import Navigation from "~/components/Navigation.vue";
+import _ from 'lodash';
+import { mapGetters } from 'vuex';
+
 export default {
+  name: 'UpdateSubconsPage',
   components: {
-    Navigation,
+    Navigation: () => import('@/components/Navigation')
   },
-  name: "index",
   // middleware: "authentication"
   data() {
     return {
@@ -61,16 +63,19 @@ export default {
         { text: "Work Progress (%)", value: "progressPercent" },
         { text: "Rating", value: "rating", align: "center" },
       ],
-      subCons: [],
-      wpc: "",
-      wpcWork: "",
-      rating: {},
+      wpcName: '',
     };
   },
+  computed: {
+    ...mapGetters(['getOneWPC']),
+
+    wpc() {
+      const wpc = this.getOneWPC(this.wpcName);
+      return _.cloneDeep(wpc);
+    }
+  },
+
   methods: {
-    log(item, subCons) {
-      console.log(item, subCons);
-    },
     /**
      * @param name name of subcon
      * @param rating rating given to subcon
@@ -79,24 +84,17 @@ export default {
      * Refreshes after dispatching to get most updated rating.
      */
     rateSubCon(name, rating) {
-      console.log(name, rating);
       this.$store.dispatch("rateSubCon", { rating, name });
       this.$store.dispatch("updateWPCWork", {
         name: this.wpc.name,
         work: this.wpc.work,
       });
-      this.refreshWorksList(this.wpc.name);
     },
 
-    refreshWorksList(name) {
-      this.wpc = this.$store.getters["getWPC"].find((x) => x.name == name);
-      console.log(this.wpc);
-    },
+
   },
   created() {
-    //name= ABC Company  --WPC company
-    const name = this.$route.query.name;
-    this.refreshWorksList(name);
+    this.wpcName = this.$route.query.name;
   },
 };
 </script>
