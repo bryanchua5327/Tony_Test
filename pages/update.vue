@@ -84,6 +84,7 @@ export default {
     },
   },
   created() {
+    //name= ABC Company  --WPC company
     const name = this.$route.query.name;
     this.refreshWorksList(name);
   },

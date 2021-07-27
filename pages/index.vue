@@ -56,6 +56,7 @@ export default {
     },
   },
   created() {
+    //name= ABC Company  --WPC company
     const name = this.$route.query.name;
     console.log(name);
     this.wpc = this.$store.getters["getWPC"].find((x) => x.name == name);

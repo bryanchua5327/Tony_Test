@@ -5,7 +5,7 @@
 
 
 import createPersistedState from "vuex-persistedstate";
-export const plugins = () => [createPersistedState()]
+
 export const state = () => ({
     subCons: [
         { name: "MUTIARA ENTERPRISE", work: ["PR01", "MEW02", "LSW01", "MTW02", "URC01", "PRL02"], ongoing: [], rating: [4] },
