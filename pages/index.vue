@@ -13,7 +13,7 @@
         <v-data-table
           :headers="headers"
           :items="wpc.work"
-          :items-per-page="5"
+          :items-per-page="10"
           class="elevation-1"
           disable-sort
         >

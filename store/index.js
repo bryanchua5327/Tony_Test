@@ -160,8 +160,8 @@ export const state = () => ({
                 startDate: "Jan2021",
                 grade: "G1",
                 amount: 567000,
-                status: "Not Awarded",
-                subCons: "",
+                status: "On-going",
+                subCons: "Subcontractor 2",
                 revisedAwardDate: "",
                 progressAmt: "",
                 progressPercent: "",
@@ -186,6 +186,7 @@ export const state = () => ({
 
 export const mutations = {
     UPDATE_RATING(state, rating) {
+
         console.log(rating.index, rating.rating)
         state.subCons[rating.index].rating.push(rating.rating)
     },
