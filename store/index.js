@@ -211,6 +211,10 @@ export const getters = {
         return [...state.wpc]
     },
 
+    getAllWpcNames(state) {
+        return state.wpc.map(w => w.name);
+    },
+
     getOneWPC: (state) => (name) => {
         return state.wpc.find((x) => x.name == name);
     },

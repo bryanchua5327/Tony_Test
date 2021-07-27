@@ -38,10 +38,12 @@
 </template>
 
 <script>
-import Navigation from "~/components/Navigation.vue";
+import _ from 'lodash';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   components: {
-    Navigation,
+    Navigation: () => import('@/components/Navigation')
   },
   name: "index",
   // middleware: "authentication"
@@ -56,11 +58,20 @@ export default {
         { text: "Action", value: "action", align: "center" },
       ],
 
-      work: [],
-      wpc: null,
+      wpcName: '',
     };
   },
+
+  computed: {
+    ...mapGetters(['getOneWPC']),
+
+    wpc() {
+      const wpc = this.getOneWPC(this.wpcName);
+      return _.cloneDeep(wpc);
+    }
+  },
   methods: {
+    
     action(item) {
       console.log(item);
     },
@@ -68,8 +79,7 @@ export default {
   created() {
     //name= ABC Company  --WPC company
     const name = this.$route.query.name;
-    console.log(name);
-    this.wpc = this.$store.getters["getWPC"].find((x) => x.name == name);
+    this.wpcName = name ? name : 'ABC Company';
   },
 };
 </script>
