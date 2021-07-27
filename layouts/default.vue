@@ -1,38 +1,18 @@
 <template>
   <v-app>
-    <AppBar />
-
     <!-- Sizes your content based upon application components -->
     <v-main class="main-div">
       <!-- Provides the application the proper gutter -->
-      <div
-        class="shader"
-        v-if="$route.name == `profile-id` && !$vuetify.breakpoint.mobile"
-      ></div>
-      <v-container
-        fluid
-        class="main-cont"
-        :class="
-          $route.name == `profile-id` && !$vuetify.breakpoint.mobile
-            ? 'push-up'
-            : ''
-        "
-      >
+      <div></div>
+      <v-container fluid class="main-cont">
         <nuxt />
       </v-container>
     </v-main>
-    <Footer />
   </v-app>
 </template>
 
 <script>
-import AppBar from "~/components/AppComponents/AppBar.vue";
-import Footer from "~/components/AppComponents/Footer.vue";
 export default {
-  components: {
-    AppBar,
-    Footer,
-  },
   data() {
     return {
       drawer: false,
@@ -44,7 +24,7 @@ export default {
 
 <style scoped>
 .main-cont {
-  width: 80%;
+  width: 700px;
   padding-bottom: 100px;
 }
 .main-div {
