@@ -7,13 +7,13 @@ import "firebase/messaging";
 
 // Fill this in with your firebase details
 var config = {
-  apiKey: "AIzaSyDe91yMsx3TJ2qeyW4TsGlKT_8gMNw7uuE",
-  authDomain: "studyhubasiaapp.firebaseapp.com",
-  projectId: "studyhubasiaapp",
-  storageBucket: "studyhubasiaapp.appspot.com",
-  messagingSenderId: "597012893034",
-  appId: "1:597012893034:web:baa0cf6770884112402913",
-  measurementId: "G-1KF8ZXP4QS"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: "G-"
 };
 
 !firebase.apps.length ? firebase.initializeApp(config) : "";
