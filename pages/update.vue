@@ -22,7 +22,7 @@
           <template v-slot:[`item.rating`]="{ item }">
             <div class="d-flex align-center justify-center">
               <v-rating
-                :readonly="item.subCons ? false : true"
+                :readonly="item.subCons && !item.rating ? false : true"
                 v-model="item.rating"
                 color="yellow darken-3"
                 background-color="grey darken-1"
@@ -41,13 +41,13 @@
 
 <script>
 import Navigation from "~/components/Navigation.vue";
-import _ from 'lodash';
-import { mapGetters } from 'vuex';
+import _ from "lodash";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'UpdateSubconsPage',
+  name: "UpdateSubconsPage",
   components: {
-    Navigation: () => import('@/components/Navigation')
+    Navigation: () => import("@/components/Navigation"),
   },
   // middleware: "authentication"
   data() {
@@ -63,16 +63,16 @@ export default {
         { text: "Work Progress (%)", value: "progressPercent" },
         { text: "Rating", value: "rating", align: "center" },
       ],
-      wpcName: '',
+      wpcName: "",
     };
   },
   computed: {
-    ...mapGetters(['getOneWPC']),
+    ...mapGetters(["getOneWPC"]),
 
     wpc() {
       const wpc = this.getOneWPC(this.wpcName);
       return _.cloneDeep(wpc);
-    }
+    },
   },
 
   methods: {
@@ -90,8 +90,6 @@ export default {
         work: this.wpc.work,
       });
     },
-
-
   },
   created() {
     this.wpcName = this.$route.query.name;

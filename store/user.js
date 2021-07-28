@@ -25,7 +25,7 @@ export const getters = {
   },
   isOnboarded(state) {
     return state.onboarded != null
-  },
+  }, 
   getEmail(state) {
     return state.email
   }
