@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import Navigation from "~/components/Navigation.vue";
 import _ from "lodash";
 import { mapGetters } from "vuex";
 

@@ -6,7 +6,7 @@
       <!-- Provides the application the proper gutter -->
 
       <v-container fluid class="main-cont">
-        <AppBar @sideNavToggle="toggleSideBar" />
+        <!-- <AppBar @sideNavToggle="toggleSideBar" /> -->
         <nuxt />
       </v-container>
     </v-main>
@@ -19,6 +19,7 @@ export default {
   components: {
     AppBar,
   },
+  name: 'DefaultLayout',
   data() {
     return {
       drawer: false,
